@@ -1,0 +1,112 @@
+$brand-red: #ff0025;
+$nav-text-color: #fff;
+$active-link-color: #a7111b;
+
+@mixin menu-hidden {
+  position: absolute;
+  left: -10000px;
+}
+
+@mixin menu-visible {
+  position: relative;
+  left: auto;
+}
+
+@mixin default-nav-link {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin: 0;
+  padding: 17px 10px 15px 10px;
+  background: $brand-red;
+  color: $nav-text-color;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.25s ease-in;
+  font-size: 0.9rem;
+  font-weight: bold;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background: $active-link-color;
+    color: $nav-text-color;
+  }
+
+  &:visited {
+    color: $nav-text-color;
+  }
+}
+
+.main-nav {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    background: $brand-red;
+  }
+
+  &::before {
+    width: 400px;
+  }
+
+  &::after {
+    width: 5%;
+  }
+}
+
+.main-nav__menu {
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-right: 4px;
+}
+
+.main-nav__item {
+  display: flex;
+  flex: 1;
+  margin-left: 4px;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    .sub-nav {
+      left: 0;
+      top: 45px;
+    }
+  }
+}
+
+.main-nav__link {
+  @include default-nav-link;
+}
+
+.main-nav__link--active {
+  background: $active-link-color;
+}
+
+.sub-nav {
+  @include menu-hidden;
+
+  z-index: 1;
+  overflow: hidden;
+  background: $brand-red;
+  min-width: 100%;
+}
+
+.sub-nav__list {
+  padding: 0;
+  list-style: none;
+}
+
+.sub-nav__link {
+  @include default-nav-link;
+  justify-content: flex-start;
+}

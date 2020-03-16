@@ -1,0 +1,17 @@
+.header {
+  position: fixed;
+  width: 100%;
+  padding: 20px 5% 0 5%;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.header__logo-link {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+
+.header__logo {
+  margin-bottom: 0;
+}

@@ -1,51 +1,48 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Masonry from 'react-masonry-component'
-import Img from 'gatsby-image'
-import Layout from "../components/layout"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout';
+import Banner from '../components/Banner';
+import Card from '../components/Card';
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <Masonry className="showcase">
-      {data.allDatoCmsWork.edges.map(({ node: work }) => (
-        <div key={work.id} className="showcase__item">
-          <figure className="card">
-            <Link to={`/works/${work.slug}`} className="card__image">
-              <Img fluid={work.coverImage.fluid} />
-            </Link>
-            <figcaption className="card__caption">
-              <h6 className="card__title">
-                <Link to={`/works/${work.slug}`}>{work.title}</Link>
-              </h6>
-              <div className="card__description">
-                <p>{work.excerpt}</p>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-      ))}
-    </Masonry>
+    <Banner />
+    <div className="home-news container">
+      <h2 className="home-news__heading">Latest News</h2>
+      <ul className="articles">
+        {data.allDatoCmsNewsArticle.edges.map((article) => (
+          <Card
+            key={article.node.slug}
+            image={article.node.image}
+            heading={article.node.heading}
+            copy={article.node.excerpt}
+            slug={article.node.slug}
+            createdAt={article.node.meta.createdAt}
+          />
+        ))}
+      </ul>
+    </div>
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
 
-export const query = graphql`
-  query IndexQuery {
-    allDatoCmsWork(sort: { fields: [position], order: ASC }) {
+export const pageQuery = graphql`
+  query pageQuery {
+    allDatoCmsNewsArticle {
       edges {
         node {
-          id
-          title
+          heading
           slug
-          excerpt
-          coverImage {
-            fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsSizes
-            }
+          meta {
+            createdAt
+          }
+          image {
+            alt
+            url
           }
         }
       }
     }
   }
-`
+`;
