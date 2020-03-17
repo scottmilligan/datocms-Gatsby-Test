@@ -1,0 +1,258 @@
+.winners-search-app {
+  background: #eee;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.postcode-search {
+  display: flex;
+}
+
+.winners-search-app__header {
+  margin-top: 5px;
+}
+
+.postcode-search__input {
+  border-radius: 9px 0 0 9px;
+  margin: 0;
+  -webkit-appearance: none;
+  padding: 14px 12px;
+  color: #666;
+  background: #fff;
+  border: 1px solid #ccc;
+  outline: 0;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.button.postcode-search__button {
+  background: #0071b6;
+  color: #fff;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  margin: 0;
+  border-radius: 0 9px 9px 0;
+  text-align: center;
+  font-size: 1rem;
+  padding: 15px;
+}
+
+.postcode-search__button .icon,
+.winners-search-app__tabs .icon {
+  display: none;
+}
+
+.winners-search-app__tabs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 0;
+  margin-bottom: 20px;
+
+  li {
+    display: flex;
+    flex: 0 1 49.5%;
+    box-sizing: border-box;
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+
+    &:last-of-type span:not(.winners-search-app__tab-icon) {
+      border-right: none;
+    }
+  }
+}
+
+.winners-search-app__tab {
+  transition: background 0.25s ease-in;
+  display: block;
+  flex: 1;
+  border-radius: 7px;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 12px 0 10px 0;
+  font-size: 1em;
+  border: none;
+  background: #0081cd;
+  cursor: pointer;
+  width: 100%;
+  outline: 0;
+
+  &:visited,
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
+
+  &:hover,
+  &:focus,
+  &--current {
+    background: #03528b;
+    text-decoration: none;
+  }
+
+  span {
+    transition: color 0.25s ease-in;
+    display: block;
+    text-align: center;
+    color: #fff;
+    border-right: none;
+    padding: 1px 20px;
+  }
+
+  &--has-results {
+    background: #1fb423;
+  }
+}
+
+.winners-search-app__postcodes {
+  border-radius: 5px;
+  background: #fff;
+}
+
+.winners-search-app__postcode {
+  width: 16.5%;
+  display: inline-block;
+  padding: 12px 5px 8px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.app-busy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-busy::after {
+  animation-delay: -1s;
+}
+
+.app-busy__animation {
+  position: relative;
+  width: 28px;
+  height: 28px;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #1d9e2b;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: sk-bounce 2s infinite ease-in-out;
+  }
+
+  &::after {
+    animation-delay: -1s;
+  }
+}
+
+.app-busy__text {
+  display: inline-block;
+  font-size: 1.2em;
+  margin-left: 10px;
+}
+
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+.recent-winners {
+  display: flex;
+  margin-bottom: 30px;
+  margin-left: -0.5%;
+  margin-right: -0.5%;
+}
+
+.winner {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 1 1 25%;
+  margin: 0 0.5%;
+}
+
+.winner__image {
+  width: 100%;
+}
+
+.winner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px 15px 15px;
+}
+
+.winner__prize {
+  font-size: 1.7rem;
+  margin: 10px 0;
+}
+
+.winner__date {
+  color: #999;
+}
+
+.winner__button {
+  border-radius: 10px;
+  margin-top: 15px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  padding: 10px;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: #fff;
+  }
+}
+
+.winner__button--green {
+  background: #1d9e2b;
+
+  &:hover,
+  &:focus {
+    background: darken(#1d9e2b, 5%);
+  }
+}
+
+.winner__button--red {
+  background: #ff0020;
+
+  &:hover,
+  &:focus {
+    background: darken(#ff0020, 5%);
+  }
+}
+
+.winner__postcode {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.winner__town {
+  font-size: 1rem;
+}

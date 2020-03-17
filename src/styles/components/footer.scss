@@ -1,0 +1,11 @@
+$brand-red: #ff0025;
+
+.footer {
+  border-top: 5px solid $brand-red;
+  padding: 20px 0;
+}
+
+.footer__legal-text {
+  font-size: 0.7rem;
+  text-align: center;
+}

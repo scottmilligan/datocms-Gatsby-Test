@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => (
             key={article.node.slug}
             image={article.node.image}
             heading={article.node.heading}
-            copy={article.node.excerpt}
+            copy={article.node.intro}
             slug={article.node.slug}
             createdAt={article.node.meta.createdAt}
           />
@@ -33,6 +33,7 @@ export const pageQuery = graphql`
       edges {
         node {
           heading
+          intro
           slug
           meta {
             createdAt

@@ -15,10 +15,10 @@ const Page = (props) => {
           {page.video
             && (
             <iframe
-              title={page.video.name}
+              title={page.video.title}
               width="560"
               height="315"
-              src={`https://www.youtube.com/embed/${page.video.identifier}`}
+              src={page.video.url}
               frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -42,6 +42,10 @@ export const pageQuery = graphql`
       slug
       title
       intro
+      video {
+        url
+        title
+      }
     }
   }
 `;
